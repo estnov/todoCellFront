@@ -6,7 +6,7 @@
             [(nzCollapsed)]="isCollapsed"
             [nzTrigger]="null">
     <div class="sidebar-logo">
-      <a href="https://ng.ant.design/" target="_blank">
+      <a routerLink="crear-producto" target="_blank">
         <img src="https://ng.ant.design/assets/img/logo.svg" alt="logo">
         <h1>TodoCell</h1>
       </a>
@@ -18,7 +18,7 @@
             <a routerLink="crear-producto">Añadir producto</a>
           </li>
           <li nz-menu-item nzMatchRouter>
-            <a>Listar productos</a>
+            <a routerLink="listar-productos">Listar productos</a>
           </li>
         </ul>
       </li>
@@ -28,7 +28,7 @@
             <a>Generar factura</a>
           </li>
           <li nz-menu-item nzMatchRouter>
-            <a>Generar nota de venta</a>
+            <a routerLink="generar-nota-venta">Generar nota de venta</a>
           </li>
           <li nz-menu-item nzMatchRouter>
             <a>Reporte de ventas</a>

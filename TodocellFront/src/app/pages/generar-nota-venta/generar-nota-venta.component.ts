@@ -1,23 +1,21 @@
 import { Component } from '@angular/core';
-import { Form, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-crear-producto',
-  templateUrl: './crear-producto.component.html',
-  styleUrls: ['./crear-producto.component.scss']
+  selector: 'app-generar-nota-venta',
+  templateUrl: './generar-nota-venta.component.html',
+  styleUrls: ['./generar-nota-venta.component.scss']
 })
-export class CrearProductoComponent {
+export class GenerarNotaVentaComponent {
 
   validateForm: FormGroup;
-  categories: any[] = [];
-
 
   onInit() {
-    console.log("CrearProductoComponent onInit");
+    console.log("GenerarNotaVentaComponent onInit");
   }
 
-  constructor() { 
-    console.log("CrearProductoComponent constructor");
+  constructor() {
+    console.log("GenerarNotaVentaComponent constructor");
     this.validateForm = new FormGroup({
       nombre: new FormControl('', [Validators.required]),
       descripcion: new FormControl('', [Validators.required]),
@@ -27,7 +25,6 @@ export class CrearProductoComponent {
     });
   }
 
-
   submitForm(): void {
     for (const i in this.validateForm.controls) {
       this.validateForm.controls[i].markAsDirty();
@@ -36,10 +33,5 @@ export class CrearProductoComponent {
     //se envia el formulario
     console.log(this.validateForm.value);
   }
-
-  loadCategories(): void {
-    //se cargan las categorias
-  }
-
 
 }
