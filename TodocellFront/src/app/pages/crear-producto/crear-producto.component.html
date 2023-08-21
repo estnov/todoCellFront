@@ -1,0 +1,37 @@
+<div >
+    <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+        <nz-form-label nzSpan="6" nzFor="nombre">Nombre</nz-form-label>
+        <nz-form-control nzSpan="14" nzErrorTip="Por favor ingrese el nombre del producto">
+            <input nz-input formControlName="nombre" id="nombre" placeholder="Nombre del producto">
+        </nz-form-control>
+        <br>
+        <nz-form-label nzSpan="6" nzFor="descripcion">Descripción</nz-form-label>
+        <nz-form-control nzSpan="14" nzErrorTip="Por favor ingrese la descripción del producto">
+            <input nz-input formControlName="descripcion" id="descripcion" placeholder="Descripción del producto">
+        </nz-form-control>
+        <br>
+        <nz-form-label nzSpan="6" nzFor="precio">Precio</nz-form-label>
+        <nz-form-control nzSpan="14" nzErrorTip="Por favor ingrese el precio del producto">
+            <input nz-input formControlName="precio" id="precio" placeholder="Precio del producto">
+        </nz-form-control>
+        <br>
+        <nz-form-label nzSpan="6" nzFor="cantidad">Cantidad</nz-form-label>
+        <nz-form-control nzSpan="14" nzErrorTip="Por favor ingrese la cantidad del producto">
+            <input nz-input formControlName="cantidad" id="cantidad" placeholder="Cantidad del producto">
+        </nz-form-control>
+        <br>
+        <nz-form-label nzSpan="6" nzFor="categoria">Categoría</nz-form-label>
+        <nz-select nzSpan="14" formControlName="categoria" id="categoria" nzPlaceHolder="Seleccione una categoría">
+            <nz-option nzValue="1" nzLabel="Celulares"></nz-option>
+            <nz-option nzValue="2" nzLabel="Accesorios"></nz-option>
+            <nz-option nzValue="3" nzLabel="Repuestos"></nz-option>
+        </nz-select>
+
+        <br>
+        <nz-form-item nz-row class="register-area">
+            <nz-form-control [nzSpan]="14" [nzOffset]="6">
+              <button nz-button nzType="primary">Register</button>
+            </nz-form-control>
+          </nz-form-item>
+    </form>
+</div>
