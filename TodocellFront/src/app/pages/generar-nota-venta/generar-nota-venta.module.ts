@@ -7,8 +7,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzButtonModule } from 'ng-zorro-antd/button';
-
-
+import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
+import { NzTableModule } from 'ng-zorro-antd/table';
+import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 
 @NgModule({
   declarations: [GenerarNotaVentaComponent],
@@ -20,8 +21,10 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
     FormsModule,
     NzSelectModule,
     NzInputModule,
-    NzButtonModule
-
+    NzButtonModule,
+    NzCheckboxModule,
+    NzTableModule,
+    NzDropDownModule
 
   ]
 })

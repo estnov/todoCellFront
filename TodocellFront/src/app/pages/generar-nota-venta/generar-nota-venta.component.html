@@ -1,37 +1,77 @@
 <div >
-    <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+    <label nz-checkbox [(ngModel)]="datos">Con datos</label>
+    <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()"  [ngSwitch]="datos">
         <nz-form-label nzSpan="6" nzFor="nombre">Nombre</nz-form-label>
-        <nz-form-control nzSpan="14" nzErrorTip="Por favor ingrese el nombre del producto">
-            <input nz-input formControlName="nombre" id="nombre" placeholder="Nombre del producto">
+        <nz-form-control nzSpan="14" nzErrorTip="Por favor ingrese el nombre de la persona">
+            <input *ngSwitchCase="true" nz-input formControlName="nombre" id="nombre" placeholder="Nombre del cliente">
+            <input style="pointer-events: none;" *ngSwitchCase="false"  nz-input id="nombre" placeholder="No aplica" >
         </nz-form-control>
         <br>
-        <nz-form-label nzSpan="6" nzFor="descripcion">Descripción</nz-form-label>
-        <nz-form-control nzSpan="14" nzErrorTip="Por favor ingrese la descripción del producto">
-            <input nz-input formControlName="descripcion" id="descripcion" placeholder="Descripción del producto">
+        <nz-form-label nzSpan="6" nzFor="descripcion">Cédula</nz-form-label>
+        <nz-form-control nzSpan="14" nzErrorTip="Por favor ingrese la cédula">
+            <input *ngSwitchCase="true" nz-input formControlName="cedula" id="cedula" placeholder="0150037994">
+            <input style="pointer-events: none;" *ngSwitchCase="false"  nz-input id="cedula" placeholder="No aplica" >
         </nz-form-control>
         <br>
-        <nz-form-label nzSpan="6" nzFor="precio">Precio</nz-form-label>
-        <nz-form-control nzSpan="14" nzErrorTip="Por favor ingrese el precio del producto">
-            <input nz-input formControlName="precio" id="precio" placeholder="Precio del producto">
+        <nz-form-label nzSpan="6" nzFor="precio">Dirección</nz-form-label>
+        <nz-form-control nzSpan="14" nzErrorTip="Por favor ingrese la dirección">
+            <input *ngSwitchCase="true" nz-input formControlName="direccion" id="direccion" placeholder="Av 10 de agosto y Paucarbamba">
+            <input style="pointer-events: none;" *ngSwitchCase="false"  nz-input id="direccion" placeholder="No aplica" >
         </nz-form-control>
         <br>
-        <nz-form-label nzSpan="6" nzFor="cantidad">Cantidad</nz-form-label>
-        <nz-form-control nzSpan="14" nzErrorTip="Por favor ingrese la cantidad del producto">
-            <input nz-input formControlName="cantidad" id="cantidad" placeholder="Cantidad del producto">
+        <nz-form-label nzSpan="6" nzFor="cantidad">Teléfono</nz-form-label>
+        <nz-form-control nzSpan="14" nzErrorTip="Por favor ingrese el teléfono">
+            <input *ngSwitchCase="true" nz-input formControlName="telefono" id="telefono" placeholder="0994877578">
+            <input style="pointer-events: none;" *ngSwitchCase="false"  nz-input id="telefono" placeholder="No aplica" >
         </nz-form-control>
         <br>
-        <nz-form-label nzSpan="6" nzFor="categoria">Categoría</nz-form-label>
-        <nz-select nzSpan="14" formControlName="categoria" id="categoria" nzPlaceHolder="Seleccione una categoría">
-            <nz-option nzValue="1" nzLabel="Celulares"></nz-option>
-            <nz-option nzValue="2" nzLabel="Accesorios"></nz-option>
-            <nz-option nzValue="3" nzLabel="Repuestos"></nz-option>
-        </nz-select>
+
+        <nz-input-group [nzSuffix]="suffixIconSearch">
+            <input type="text" nz-input placeholder="Nombre de producto:" />
+          </nz-input-group>
+          <ng-template #suffixIconSearch>
+            <span nz-icon nzType="search"></span>
+          </ng-template>
+        
+
+        <nz-table #nzTable [nzData]="venta" nzTableLayout="fixed">
+            <thead>
+              <tr>
+                <th nzCustomFilter>
+                  Nombre
+                  <nz-filter-trigger [(nzVisible)]="visible" [nzActive]="searchValue.length > 0" [nzDropdownMenu]="menu">
+                    <span nz-icon nzType="search"></span>
+                  </nz-filter-trigger>
+                </th>
+                <th>Cantidad</th>
+                <th>Precio unitario</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let data of nzTable.data">
+                <td>{{ data.nombre }}</td>
+                <td>{{ data.cantidad }}</td>
+                <td>{{ data.precio }}</td>
+                <td>{{ data.total }}</td>
+              </tr>
+            </tbody>
+          </nz-table>
+          <nz-dropdown-menu #menu="nzDropdownMenu">
+            <div class="ant-table-filter-dropdown">
+              <div class="search-box">
+                <input type="text" nz-input placeholder="Search name" [(ngModel)]="searchValue" />
+                <button nz-button nzSize="small" nzType="primary" (click)="search()" class="search-button">Buscar</button>
+                <button nz-button nzSize="small" (click)="reset()">Reset</button>
+              </div>
+            </div>
+          </nz-dropdown-menu>
 
         <br>
         <br>
         <nz-form-item nz-row class="register-area">
             <nz-form-control [nzSpan]="14" [nzOffset]="6">
-              <button nz-button nzType="primary">Guardar</button>
+              <button nz-button nzType="primary">Generar venta</button>
             </nz-form-control>
           </nz-form-item>
     </form>
